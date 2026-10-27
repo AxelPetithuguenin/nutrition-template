@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2000" height="1100" viewBox="0 0 2000 1100" role="img" aria-label="Bandeau d'appel à l'action">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0.7" y2="1">
+      <stop offset="0%" stop-color="#36413E"/>
+      <stop offset="100%" stop-color="#2A332F"/>
+    </linearGradient>
+    <filter id="soft" x="-25%" y="-25%" width="150%" height="150%">
+      <feGaussianBlur stdDeviation="154"/>
+    </filter>
+  </defs>
+
+  <rect width="2000" height="1100" fill="url(#bg)"/>
+  <g filter="url(#soft)">
+    <ellipse cx="1221" cy="789" rx="408" ry="437" fill="#A8B59A" opacity="0.50"/>
+    <ellipse cx="1432" cy="968" rx="206" ry="171" fill="#36413E" opacity="0.50"/>
+    <ellipse cx="1798" cy="697" rx="436" ry="286" fill="#C9A96A" opacity="0.50"/>
+    <ellipse cx="944" cy="299" rx="342" ry="303" fill="#A8B59A" opacity="0.50"/>
+    <ellipse cx="124" cy="270" rx="272" ry="288" fill="#36413E" opacity="0.50"/>
+  </g>
+
+  <g opacity="0.7" text-anchor="middle">
+    <text x="1000" y="550" font-family="Georgia, 'Times New Roman', serif" font-size="55" fill="#FDFCFA">Bandeau d'appel à l'action</text>
+    <text x="1000" y="638" font-family="Helvetica, Arial, sans-serif" font-size="28" letter-spacing="1.5" fill="#FDFCFA" opacity="0.65">cta.jpg · 2000 × 1100 px</text>
+  </g>
+</svg>

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600" role="img" aria-label="Galerie 3">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0.7" y2="1">
+      <stop offset="0%" stop-color="#F8F6F2"/>
+      <stop offset="100%" stop-color="#EFEBE3"/>
+    </linearGradient>
+    <filter id="soft" x="-25%" y="-25%" width="150%" height="150%">
+      <feGaussianBlur stdDeviation="84"/>
+    </filter>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" seed="33"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.055"/></feComponentTransfer>
+    </filter>
+  </defs>
+
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <g filter="url(#soft)">
+    <ellipse cx="451" cy="371" rx="226" ry="167" fill="#A8B59A" opacity="0.50"/>
+    <ellipse cx="509" cy="511" rx="239" ry="166" fill="#FDFCFA" opacity="0.50"/>
+    <ellipse cx="509" cy="363" rx="180" ry="195" fill="#C9A96A" opacity="0.50"/>
+    <ellipse cx="420" cy="270" rx="244" ry="224" fill="#A8B59A" opacity="0.50"/>
+    <ellipse cx="257" cy="197" rx="179" ry="112" fill="#FDFCFA" opacity="0.50"/>
+  </g>
+  <rect width="800" height="600" filter="url(#grain)" opacity="0.5"/>
+
+  <g opacity="0.55" text-anchor="middle">
+    <text x="400" y="300" font-family="Georgia, 'Times New Roman', serif" font-size="30" fill="#36413E">Galerie 3</text>
+    <text x="400" y="348" font-family="Helvetica, Arial, sans-serif" font-size="15" letter-spacing="1.5" fill="#36413E" opacity="0.65">800 × 600 px</text>
+  </g>
+</svg>

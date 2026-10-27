@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="1600" viewBox="0 0 2400 1600" role="img" aria-label="Photo lifestyle plein écran">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0.7" y2="1">
+      <stop offset="0%" stop-color="#36413E"/>
+      <stop offset="100%" stop-color="#2A332F"/>
+    </linearGradient>
+    <filter id="soft" x="-25%" y="-25%" width="150%" height="150%">
+      <feGaussianBlur stdDeviation="224"/>
+    </filter>
+  </defs>
+
+  <rect width="2400" height="1600" fill="url(#bg)"/>
+  <g filter="url(#soft)">
+    <ellipse cx="634" cy="864" rx="430" ry="388" fill="#A8B59A" opacity="0.50"/>
+    <ellipse cx="1472" cy="174" rx="293" ry="299" fill="#36413E" opacity="0.50"/>
+    <ellipse cx="680" cy="417" rx="670" ry="560" fill="#C9A96A" opacity="0.50"/>
+    <ellipse cx="1927" cy="766" rx="533" ry="360" fill="#A8B59A" opacity="0.50"/>
+    <ellipse cx="1491" cy="1330" rx="489" ry="475" fill="#A8B59A" opacity="0.50"/>
+  </g>
+
+  <g opacity="0.7" text-anchor="middle">
+    <text x="1200" y="800" font-family="Georgia, 'Times New Roman', serif" font-size="80" fill="#FDFCFA">Photo lifestyle plein écran</text>
+    <text x="1200" y="928" font-family="Helvetica, Arial, sans-serif" font-size="41" letter-spacing="1.5" fill="#FDFCFA" opacity="0.65">hero.jpg · 2400 × 1600 px · cadrage centré</text>
+  </g>
+</svg>

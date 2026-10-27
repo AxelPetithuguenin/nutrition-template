@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 160" width="300" height="160" fill="none"><defs>
+ <radialGradient id="q" cx="50%" cy="96%" r="96%">
+  <stop offset="0%" stop-color="#FFE09C"/><stop offset="70%" stop-color="#FBB040"/><stop offset="100%" stop-color="#F09427"/>
+ </radialGradient>
+</defs>
+<path d="M20 150 A130 130 0 0 1 280 150Z" fill="#F09427"/>
+<path d="M32 150 A118 118 0 0 1 268 150Z" fill="#FFE5AE"/>
+<path d="M150 150 L38 142 A112 112 0 0 1 49 101 Z" fill="#FBB040" stroke="#FFF3D6" stroke-width="4"/><path d="M150 150 L51 97 A112 112 0 0 1 78 64 Z" fill="#FBB040" stroke="#FFF3D6" stroke-width="4"/><path d="M150 150 L81 62 A112 112 0 0 1 119 42 Z" fill="#FBB040" stroke="#FFF3D6" stroke-width="4"/><path d="M150 150 L123 41 A112 112 0 0 1 166 39 Z" fill="#FBB040" stroke="#FFF3D6" stroke-width="4"/><path d="M150 150 L169 40 A112 112 0 0 1 209 55 Z" fill="#FBB040" stroke="#FFF3D6" stroke-width="4"/><path d="M150 150 L213 57 A112 112 0 0 1 243 87 Z" fill="#FBB040" stroke="#FFF3D6" stroke-width="4"/><path d="M150 150 L245 91 A112 112 0 0 1 260 131 Z" fill="#FBB040" stroke="#FFF3D6" stroke-width="4"/><path d="M150 150 L261 134 A112 112 0 0 1 259 177 Z" fill="#FBB040" stroke="#FFF3D6" stroke-width="4"/></svg>

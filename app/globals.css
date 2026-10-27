@@ -1,0 +1,289 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+ *  PONT ENTRE LA CONFIGURATION CLIENT ET TAILWIND
+ * ==========================================================================
+ *  `lib/theme.ts` injecte les couleurs de `data/site.ts` dans des variables
+ *  `--c-*`. Le bloc `@theme inline` ci-dessous les expose a Tailwind :
+ *  ecrire `bg-primary`, `text-muted` ou `border-border` dans un composant
+ *  suffit, et la couleur suit automatiquement la charte du client.
+ *
+ *  >> Ce fichier n'a pas a etre modifie pour un nouveau client. <<
+ * ======================================================================== */
+@theme inline {
+  /* Couleurs (pilotees par theme.colors dans data/site.ts) */
+  --color-primary: var(--c-primary);
+  --color-primary-dark: var(--c-primary-dark);
+  --color-primary-light: var(--c-primary-light);
+  --color-secondary: var(--c-secondary);
+  --color-accent: var(--c-accent);
+  --color-background: var(--c-background);
+  --color-surface: var(--c-surface);
+  --color-ink: var(--c-text);
+  --color-muted: var(--c-text-muted);
+  --color-border: var(--c-border);
+  --color-overlay: var(--c-overlay);
+  --color-on-primary: var(--c-on-primary);
+  --color-footer-bg: var(--c-footer-bg);
+  --color-footer-text: var(--c-footer-text);
+
+  /* Polices (pilotees par theme.typography) */
+  --font-sans: var(--font-body);
+  --font-display: var(--font-heading);
+
+  /* Arrondi global (pilote par theme.radius) */
+  --radius-theme: var(--radius-base);
+
+  /* Echelle typographique fluide : la taille suit la largeur de l'ecran,
+     sans paliers brutaux entre mobile et grand ecran. */
+  --text-display: clamp(2.75rem, 1.6rem + 4.6vw, 5.25rem);
+  --text-display--line-height: 1.02;
+  --text-display--letter-spacing: -0.03em;
+  --text-headline: clamp(2rem, 1.35rem + 2.6vw, 3.25rem);
+  --text-headline--line-height: 1.1;
+  --text-headline--letter-spacing: -0.025em;
+  --text-title: clamp(1.375rem, 1.15rem + 0.9vw, 1.75rem);
+  --text-title--line-height: 1.25;
+  --text-title--letter-spacing: -0.015em;
+  --text-lead: clamp(1.0625rem, 1rem + 0.35vw, 1.25rem);
+  --text-lead--line-height: 1.65;
+
+  /* Cadence verticale des sections : large, et constante. */
+  --spacing-section: clamp(5.5rem, 3.5rem + 7vw, 9rem);
+  --spacing-section-sm: clamp(4rem, 3rem + 4vw, 6rem);
+}
+
+/* ==========================================================================
+ *  BASE
+ * ======================================================================== */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Compense la hauteur de l'en-tete fixe lors d'un saut vers une ancre. */
+    scroll-padding-top: 6rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-synthesis-weight: none;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Chiffres alignes et de largeur fixe : indispensable pour les tarifs,
+     les statistiques et les horaires en colonne. */
+  :where(time, .tabular) {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Focus visible homogene sur tout le site (accessibilite clavier). */
+  :where(a, button, input, textarea, select, summary, [tabindex]):focus-visible {
+    outline: 1.5px solid var(--color-primary);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  ::selection {
+    background-color: color-mix(in oklab, var(--color-primary) 18%, transparent);
+    color: var(--color-ink);
+  }
+}
+
+/* ==========================================================================
+ *  UTILITAIRES DU TEMPLATE
+ * ======================================================================== */
+
+/** Voile pose sur les images de fond (intensite : theme.overlayOpacity). */
+@utility overlay-scrim {
+  background-color: color-mix(
+    in oklab,
+    var(--color-overlay) calc(var(--overlay-opacity, 0.4) * 100%),
+    transparent
+  );
+}
+
+/**
+ * Degrade sombre pose sous le texte d'un visuel plein ecran.
+ * Complete `overlay-scrim` : il garantit un contraste suffisant meme sur une
+ * photo tres claire, sans assombrir uniformement l'image.
+ */
+@utility overlay-gradient {
+  background-image: linear-gradient(
+    to top,
+    color-mix(in oklab, var(--color-overlay) 86%, transparent) 0%,
+    color-mix(in oklab, var(--color-overlay) 52%, transparent) 42%,
+    color-mix(in oklab, var(--color-overlay) 14%, transparent) 78%,
+    transparent 100%
+  );
+}
+
+/**
+ * Voile superieur, sous l'en-tete transparent.
+ * Sans lui, un logo clair et des liens blancs deviennent illisibles des que la
+ * photo du hero s'eclaircit en haut du cadre.
+ */
+@utility overlay-top {
+  background-image: linear-gradient(
+    to bottom,
+    color-mix(in oklab, var(--color-overlay) 72%, transparent) 0%,
+    color-mix(in oklab, var(--color-overlay) 34%, transparent) 45%,
+    transparent 100%
+  );
+}
+
+/**
+ * Ombres. Volontairement a la limite du perceptible : sur une charte claire,
+ * la profondeur vient des filets et des aplats, pas des ombres portees.
+ */
+@utility shadow-card {
+  box-shadow:
+    0 1px 1px color-mix(in oklab, var(--color-overlay) 4%, transparent),
+    0 8px 24px -16px color-mix(in oklab, var(--color-overlay) 16%, transparent);
+}
+
+@utility shadow-card-hover {
+  box-shadow:
+    0 1px 2px color-mix(in oklab, var(--color-overlay) 6%, transparent),
+    0 20px 44px -24px color-mix(in oklab, var(--color-overlay) 24%, transparent);
+}
+
+@utility shadow-float {
+  box-shadow:
+    0 2px 6px color-mix(in oklab, var(--color-overlay) 7%, transparent),
+    0 28px 60px -30px color-mix(in oklab, var(--color-overlay) 28%, transparent);
+}
+
+/** Etiquette de section : petites capitales espacees. */
+@utility eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+/**
+ * Or dense, pour les elements graphiques poses sur fond clair.
+ *
+ * L'or de la charte (#C9A96A) n'atteint que 2,1:1 sur creme : suffisant pour
+ * un aplat decoratif, insuffisant des qu'un element porte une information
+ * (WCAG 1.4.11 demande 3:1). Ce melange avec le vert profond monte a environ
+ * 3,6:1 tout en restant dans la meme famille chromatique.
+ */
+@utility text-gold-strong {
+  color: color-mix(in srgb, var(--color-accent) 60%, var(--color-primary));
+}
+
+/** Filet horizontal decoratif, degrade vers la transparence. */
+@utility rule-soft {
+  background-image: linear-gradient(
+    to right,
+    color-mix(in oklab, var(--color-primary) 28%, transparent),
+    transparent
+  );
+}
+
+/** Largeur de lecture confortable (environ 65 signes). */
+@utility measure {
+  max-width: 34rem;
+}
+
+/* ==========================================================================
+ *  MOUVEMENT
+ * ======================================================================== */
+
+/**
+ * Transition d'un visuel qui s'agrandit legerement au survol de sa carte.
+ * S'utilise avec `group-hover:scale-[1.04]` sur l'image, et `group` sur la carte.
+ */
+@utility image-zoom {
+  transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+  transform-origin: center;
+}
+
+/**
+ * Animation d'entree, en CSS pur.
+ *
+ * Reservee au contenu visible au chargement (le hero). Les sections situees
+ * plus bas utilisent Framer Motion, qui attend l'hydratation : acceptable
+ * quand on doit de toute facon faire defiler la page, mais penalisant en haut
+ * d'ecran, ou cela retarde l'affichage du titre — donc le LCP — et laisserait
+ * le hero invisible si le JavaScript echouait.
+ */
+@keyframes entrance-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.entrance {
+  animation: entrance-in 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: var(--entrance-delay, 0ms);
+}
+
+/**
+ * Flottement des visuels decoratifs du hero.
+ *
+ * Amplitude volontairement faible et duree longue : l'oeil doit percevoir que
+ * la page respire, jamais qu'elle bouge. Comme l'animation est en CSS, elle
+ * demarre au premier rendu, sans attendre le JavaScript.
+ */
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(-14px) rotate(1.5deg); }
+}
+
+.animate-float {
+  animation: float 7s ease-in-out infinite;
+}
+
+/** Scintillement des etincelles, decale d'un element a l'autre. */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.25; transform: scale(0.85); }
+  50%      { opacity: 0.9;  transform: scale(1.1); }
+}
+
+.animate-twinkle {
+  animation: twinkle 4.5s ease-in-out infinite;
+}
+
+/* Aucune animation si l'utilisateur a demande une interface sobre. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .entrance,
+  .animate-float,
+  .animate-twinkle {
+    animation: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

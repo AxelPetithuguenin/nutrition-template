@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="750" viewBox="0 0 1000 750" role="img" aria-label="Sources de protéines">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0.7" y2="1">
+      <stop offset="0%" stop-color="#F8F6F2"/>
+      <stop offset="100%" stop-color="#EFEBE3"/>
+    </linearGradient>
+    <filter id="soft" x="-25%" y="-25%" width="150%" height="150%">
+      <feGaussianBlur stdDeviation="105"/>
+    </filter>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" seed="22"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.055"/></feComponentTransfer>
+    </filter>
+  </defs>
+
+  <rect width="1000" height="750" fill="url(#bg)"/>
+  <g filter="url(#soft)">
+    <ellipse cx="912" cy="132" rx="139" ry="153" fill="#A8B59A" opacity="0.50"/>
+    <ellipse cx="216" cy="119" rx="252" ry="195" fill="#C9A96A" opacity="0.50"/>
+    <ellipse cx="851" cy="194" rx="308" ry="234" fill="#FDFCFA" opacity="0.50"/>
+    <ellipse cx="591" cy="667" rx="258" ry="274" fill="#A8B59A" opacity="0.50"/>
+    <ellipse cx="687" cy="70" rx="294" ry="263" fill="#A8B59A" opacity="0.50"/>
+  </g>
+  <rect width="1000" height="750" filter="url(#grain)" opacity="0.5"/>
+
+  <g opacity="0.55" text-anchor="middle">
+    <text x="500" y="375" font-family="Georgia, 'Times New Roman', serif" font-size="37" fill="#36413E">Sources de protéines</text>
+    <text x="500" y="434" font-family="Helvetica, Arial, sans-serif" font-size="19" letter-spacing="1.5" fill="#36413E" opacity="0.65">journal-2.jpg · 1000 × 750 px</text>
+  </g>
+</svg>
